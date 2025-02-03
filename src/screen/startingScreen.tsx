@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
-const startScreen = () => {
-  const [isLoading, setIsLoading] = useState(true);
+const StartScreen: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     // Simulate a loading process
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsLoading(false);
     }, 3000); // 3 seconds delay
+
+    return () => clearTimeout(timer); // Cleanup timeout on unmount
   }, []);
 
   return (
@@ -54,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default startScreen;
+export default StartScreen;
